@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html >
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+	<script src="./js/libs/three.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.2/dat.gui.min.js"></script>
+	<!-- Load FBXLoader -->
+	<script src="./js/libs/inflate.min.js"></script>
+	<script src="./js/loaders/FBXLoader.js"></script>
+	<!-- Load TensorFlow.js -->
+	<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.14.1"></script>
+	<!-- Load Posenet -->
+	<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/posenet@0.2.3"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/stats.js/r16/Stats.js"></script>
+	<!-- Load SpeechCommands -->
+	<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/speech-commands@0.2.4"></script>
+	<!-- Load Trackingjs -->
+	<script src="./js/libs/tracking-min.js" ></script>
+	<script src="./js/libs/face-min.js" ></script>
+
+	<script src="./js/main.js" ></script>
+	<script src="./js/emotion.js" ></script>
+
+
+	<style type="text/css">
+		html,body{ margin:0; height:100%}
+		.left{ float:left; width:25%; height:100%; background: #b8b8b8
+		}
+		.right{ float:left; width:75%; height:100%; background: #ffeb78
+		}
+	</style>
+
+<body style="margin:0px; overflow:hidden;">
+	<div class="left">
+		<div align="center" style="margin-top:200px;">
+			<button id="pika" onmousedown="collect(0)" onmouseup="collect(null)">Pikachu</button>
+			<button id="eevee" onmousedown="collect(1)" onmouseup="collect(null)">Eevee</button>
+			<button id="noise" onmousedown="collect(2)" onmouseup="collect(null)">Noise</button>
+			<br/><br/>
+			<button id="train" onclick="train()">Train</button>
+			<br/><br/>
+			<button id="listen" onclick="listen()">Listen</button>
+			<br/><br/>
+			<div align="center">
+				<img id="pikachugif" src="./assets/pikachu.gif" style="display: none;cursor: hand; cursor:pointer;" onclick="clearLoading()">
+				<img id="eeveegif" src="./assets/eevee.gif" style="display: none">
+			</div>
+			<script src="./js/audio.js"></script>
+
+			<div id="console"></div>
+		</div>
+	</div>
+	<div class="right" id="right">
+		<div  id="right1" style="position: fixed;top: 50%;left: 65%;margin: -329px 0 0 -429px;">
+			<div  id="loading" style="position: absolute;z-index:9999;">
+				<img src="./assets/mask.jpg" height="600px" width="800px">
+			</div>
+			<video id="video" width="800px" height="600px" autoplay="1" style="position:absolute;visibility:hidden;" ></video>
+			<canvas id="canvas" width="800px" height="600px" style="position:absolute;"></canvas>
+			<canvas height="100" id="faceCanvas" width="100" style="display: none;"></canvas>
+		</div>
+
+
+	</div>
+
+</body>
+</html>
